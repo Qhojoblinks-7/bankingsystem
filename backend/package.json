@@ -1,0 +1,23 @@
+{
+  "author": "",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.1",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "description": "",
+  "devDependencies": {
+    "supabase": "^2.6.8"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "app.js",
+  "name": "backend",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "commonjs",
+  "version": "1.0.0"
+}
