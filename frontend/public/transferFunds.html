@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Funds</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .transfer-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .transfer-form h2 {
+            color: #007bff;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #555;
+        }
+        .form-control, .form-select {
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 6px rgba(0, 123, 255, 0.25);
+        }
+        .otp-input {
+            width: 3rem;
+            text-align: center;
+            margin-right: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .otp-input:last-child {
+            margin-right: 0;
+        }
+        .otp-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 6px rgba(0, 123, 255, 0.25);
+        }
+        .btn-primary, .btn-success {
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary:hover, .btn-success:hover {
+            background-color: #0056b3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .d-grid .btn {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="transfer-form">
+            <h2>Transfer Funds</h2>
+            <form id="transferForm">
+                <div class="mb-3">
+                    <label for="recipientName" class="form-label">Recipient's Name</label>
+                    <input type="text" class="form-control" id="recipientName" placeholder="Enter recipient's full name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="accountNumber" class="form-label">Account Number</label>
+                    <input type="text" class="form-control" id="accountNumber" placeholder="Enter account number" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bankName" class="form-label">Bank</label>
+                    <select class="form-select" id="bankName" required>
+                        <option value="">Select Bank</option>
+                        <option value="Bank A">Bank A</option>
+                        <option value="Bank B">Bank B</option>
+                        <option value="Bank C">Bank C</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount (GHC)</label>
+                    <input type="number" class="form-control" id="amount" step="0.01" placeholder="Enter amount" required>
+                </div>
+                <div id="otpSection" class="mb-3" style="display: none;">
+                    <label class="form-label">Enter OTP</label>
+                    <div>
+                        <input type="text" class="form-control d-inline otp-input" maxlength="1" required>
+                        <input type="text" class="form-control d-inline otp-input" maxlength="1" required>
+                        <input type="text" class="form-control d-inline otp-input" maxlength="1" required>
+                        <input type="text" class="form-control d-inline otp-input" maxlength="1" required>
+                        <input type="text" class="form-control d-inline otp-input" maxlength="1" required>
+                        <input type="text" class="form-control d-inline otp-input" maxlength="1" required>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" id="sendOtpBtn" class="btn btn-primary">Send OTP</button>
+                    <button type="submit" id="sendBtn" class="btn btn-success" disabled>Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        $(document).ready(function() {
+            const transferForm = $('#transferForm');
+            const sendOtpBtn = $('#sendOtpBtn');
+            const sendBtn = $('#sendBtn');
+            const otpSection = $('#otpSection');
+            const otpInputs = $('.otp-input');
+
+            // Enable Send OTP button when form is valid
+            transferForm.on('input', function() {
+                if (this.checkValidity()) {
+                    sendOtpBtn.prop('disabled', false);
+                } else {
+                    sendOtpBtn.prop('disabled', true);
+                }
+            });
+
+            // Simulate sending OTP
+            sendOtpBtn.on('click', function() {
+                otpSection.show();
+                sendOtpBtn.hide();
+                sendBtn.prop('disabled', true);
+                alert('OTP has been sent to your registered mobile number.');
+            });
+
+            // Handle OTP input
+            otpInputs.on('input', function() {
+                const allFilled = Array.from(otpInputs).every(input => input.value);
+                sendBtn.prop('disabled', !allFilled);
+            });
+
+            // Handle form submission
+            transferForm.on('submit', function(event) {
+                event.preventDefault();
+                alert('Funds transferred successfully!');
+                // Reset form
+                transferForm[0].reset();
+                otpSection.hide();
+                sendOtpBtn.show().prop('disabled', true);
+                sendBtn.prop('disabled', true);
+            });
+        });
+    </script>
+</body>
+</html>

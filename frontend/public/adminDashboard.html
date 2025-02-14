@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" aria-labelledby="dashboardTitle" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banking Operations Dashboard</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AdminLTE CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Custom adjustments for industry-standard styling */
+    .card-stat {
+      border-left: 4px solid #0d6efd;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .notification-badge {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      padding: 0.25em 0.5em;
+      border-radius: 50%;
+      background: red;
+      color: white;
+      font-size: 0.75rem;
+    }
+    .dropdown-notifications {
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .insight-card {
+      background: linear-gradient(135deg, #0d6efd, #00d1b2);
+      color: #fff;
+    }
+    .section-header {
+      margin: 30px 0 15px;
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 5px;
+    }
+    /* Accessibility focus states */
+    a:focus, button:focus, input:focus, select:focus {
+      outline: 2px solid #0d6efd;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom" role="navigation" aria-label="Main Navigation">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button" aria-label="Toggle Sidebar">
+          <i class="fas fa-bars"></i>
+        </a>
+      </li>
+      <!-- Search bar -->
+      <li class="nav-item d-none d-sm-inline-block">
+        <form class="form-inline" role="search" aria-label="Site Search">
+          <div class="input-group input-group-sm">
+            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+              <button class="btn btn-navbar" type="submit" aria-label="Submit Search">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link position-relative" data-bs-toggle="dropdown" href="#" aria-expanded="false" aria-haspopup="true">
+          <i class="far fa-bell"></i>
+          <span class="notification-badge" aria-label="3 new notifications">3</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right dropdown-notifications" role="menu">
+          <li class="dropdown-header">3 Notifications</li>
+          <li>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-exclamation-circle me-2 text-warning"></i> Suspicious transaction detected
+              <span class="float-end text-muted text-sm">5 mins</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user-check me-2 text-success"></i> New user registered
+              <span class="float-end text-muted text-sm">30 mins</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-chart-line me-2 text-info"></i> Daily report ready
+              <span class="float-end text-muted text-sm">1 hour</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </li>
+        </ul>
+      </li>
+      <!-- Profile Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-bs-toggle="dropdown" href="#" aria-haspopup="true">
+          <img src="https://via.placeholder.com/40" alt="Admin Profile" class="img-circle elevation-2" style="width:40px;height:40px;">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" role="menu">
+          <li class="dropdown-item text-center">
+            <strong>Admin Name</strong>
+          </li>
+          <li>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user me-2"></i> Profile Settings
+            </a>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-sign-out-alt me-2"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Sidebar -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" role="complementary" aria-label="Sidebar Navigation">
+    <a href="#" class="brand-link">
+      <img src="https://via.placeholder.com/150x50?text=Bank+Logo" alt="Bank Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Bank Admin</span>
+    </a>
+    <div class="sidebar">
+      <nav class="mt-2" aria-label="Sidebar Menu">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Overview</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>User Management</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+              <p>Branches</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-hand-holding-usd"></i>
+              <p>Loan Management</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-shield-alt"></i>
+              <p>Risk &amp; Compliance</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>Financial Reports</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>Settings</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    <!-- Content Header -->
+    <header class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 id="dashboardTitle" class="m-0">Bank Operations Dashboard</h1>
+          </div>
+          <div class="col-sm-6">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="content">
+      <div class="container-fluid">
+        <!-- Dashboard Summary Cards -->
+        <div class="row">
+          <!-- KPI Cards -->
+          <div class="col-lg-2 col-6">
+            <div class="card card-stat" role="region" aria-label="Total Users">
+              <div class="card-body">
+                <h6 class="card-subtitle text-muted">Total Users</h6>
+                <h3 class="card-title" id="totalUsers">1,250</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-6">
+            <div class="card card-stat" role="region" aria-label="Transactions Today">
+              <div class="card-body">
+                <h6 class="card-subtitle text-muted">Transactions Today</h6>
+                <h3 class="card-title" id="transactionsToday">320</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-6">
+            <div class="card card-stat" role="region" aria-label="Total Deposits">
+              <div class="card-body">
+                <h6 class="card-subtitle text-muted">Total Deposits</h6>
+                <h3 class="card-title" id="totalDeposits">GHC 2.5M</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-6">
+            <div class="card card-stat" role="region" aria-label="Total Loans">
+              <div class="card-body">
+                <h6 class="card-subtitle text-muted">Total Loans</h6>
+                <h3 class="card-title" id="totalLoans">GHC 1.8M</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-6">
+            <div class="card card-stat" role="region" aria-label="Risk Alerts">
+              <div class="card-body">
+                <h6 class="card-subtitle text-muted">Risk Alerts</h6>
+                <h3 class="card-title" id="riskAlerts">5</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-6">
+            <div class="card card-stat" role="region" aria-label="Compliance Issues">
+              <div class="card-body">
+                <h6 class="card-subtitle text-muted">Compliance Issues</h6>
+                <h3 class="card-title" id="complianceIssues">2</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Section: System & Operational Insights -->
+        <section aria-labelledby="systemInsights">
+          <h2 id="systemInsights" class="section-header">System & Operational Insights</h2>
+          <div class="row">
+            <!-- System Insights Card -->
+            <div class="col-lg-6">
+              <div class="card insight-card mb-4" role="region" aria-label="System Insights">
+                <div class="card-body">
+                  <h5 class="card-title">System Insights</h5>
+                  <p class="card-text">Today's Revenue: <strong>GHC 45,000</strong></p>
+                  <p class="card-text">Customer Growth: <strong>+5%</strong></p>
+                  <canvas id="insightsChart" height="150" aria-label="Revenue Trends Chart"></canvas>
+                </div>
+              </div>
+            </div>
+            <!-- Recent Alerts Widget -->
+            <div class="col-lg-6">
+              <div class="card mb-4" role="region" aria-label="Recent Alerts">
+                <div class="card-header">
+                  <h5>Recent Alerts</h5>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <i class="fas fa-exclamation-circle text-warning me-2"></i>
+                      Suspicious withdrawal of GHC 1,200 detected
+                      <span class="float-end text-muted">10 mins ago</span>
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-user-plus text-success me-2"></i>
+                      New user registration: Ama Serwaa
+                      <span class="float-end text-muted">25 mins ago</span>
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-chart-line text-info me-2"></i>
+                      Daily financial report generated
+                      <span class="float-end text-muted">1 hour ago</span>
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-ban text-danger me-2"></i>
+                      Failed transaction alert: GHC 750
+                      <span class="float-end text-muted">2 hours ago</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Section: Advanced Analytics -->
+        <section aria-labelledby="advancedAnalytics">
+          <h2 id="advancedAnalytics" class="section-header">Advanced Analytics</h2>
+          <div class="row">
+            <!-- Transaction Distribution Chart -->
+            <div class="col-lg-6">
+              <div class="card mb-4" role="region" aria-label="Transaction Distribution">
+                <div class="card-header">
+                  <h5>Transaction Distribution</h5>
+                </div>
+                <div class="card-body">
+                  <canvas id="distributionChart" height="200" aria-label="Distribution of Transactions"></canvas>
+                </div>
+              </div>
+            </div>
+            <!-- Customer Growth Chart -->
+            <div class="col-lg-6">
+              <div class="card mb-4" role="region" aria-label="Customer Growth Over Time">
+                <div class="card-header">
+                  <h5>Customer Growth Over Time</h5>
+                </div>
+                <div class="card-body">
+                  <canvas id="growthChart" height="200" aria-label="Customer Growth Chart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Section: Branch Performance -->
+        <section aria-labelledby="branchPerformance">
+          <h2 id="branchPerformance" class="section-header">Branch Performance Analytics</h2>
+          <div class="row">
+            <div class="col-12">
+              <div class="card mb-4" role="region" aria-label="Branch Performance Table">
+                <div class="card-header">
+                  <h5>Branch Performance</h5>
+                </div>
+                <div class="card-body">
+                  <table class="table table-bordered table-hover" aria-describedby="branchPerformanceDesc">
+                    <caption id="branchPerformanceDesc">Performance metrics for all branches.</caption>
+                    <thead class="table-light">
+                      <tr>
+                        <th>Branch</th>
+                        <th>Total Deposits (GHC)</th>
+                        <th>Total Loans (GHC)</th>
+                        <th>Customer Count</th>
+                        <th>Performance Rating</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Accra Central</td>
+                        <td>GHC 750,000</td>
+                        <td>GHC 500,000</td>
+                        <td>350</td>
+                        <td><span class="badge bg-success">Excellent</span></td>
+                      </tr>
+                      <tr>
+                        <td>Kumasi</td>
+                        <td>GHC 500,000</td>
+                        <td>GHC 400,000</td>
+                        <td>280</td>
+                        <td><span class="badge bg-warning">Good</span></td>
+                      </tr>
+                      <tr>
+                        <td>Tema</td>
+                        <td>GHC 400,000</td>
+                        <td>GHC 350,000</td>
+                        <td>220</td>
+                        <td><span class="badge bg-info">Average</span></td>
+                      </tr>
+                      <tr>
+                        <td>Takoradi</td>
+                        <td>GHC 300,000</td>
+                        <td>GHC 250,000</td>
+                        <td>180</td>
+                        <td><span class="badge bg-danger">Below Par</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Recent Transactions Table -->
+        <div class="card mb-4" role="region" aria-label="Recent Transactions">
+          <div class="card-header">
+            <h5>Recent Transactions</h5>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-striped mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Date</th>
+                    <th>User</th>
+                    <th>Type</th>
+                    <th>Amount (GHC)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="transactionTable">
+                  <tr>
+                    <td>2025-02-03</td>
+                    <td>Kwame Mensah</td>
+                    <td>Deposit</td>
+                    <td>+2,000.00</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>2025-02-03</td>
+                    <td>Akosua Boateng</td>
+                    <td>Withdrawal</td>
+                    <td>-500.00</td>
+                    <td><span class="badge bg-warning">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>2025-02-02</td>
+                    <td>Kofi Adjei</td>
+                    <td>Transfer</td>
+                    <td>-1,250.00</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>2025-02-02</td>
+                    <td>Efua Owusu</td>
+                    <td>Deposit</td>
+                    <td>+3,400.00</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>2025-02-01</td>
+                    <td>Kwaku Danso</td>
+                    <td>Transfer</td>
+                    <td>-750.00</td>
+                    <td><span class="badge bg-danger">Failed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Chart Section: Monthly Transaction Trends -->
+        <div class="card" role="region" aria-label="Monthly Transaction Trends">
+          <div class="card-header">
+            <h5>Monthly Transaction Trends</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="transactionChart" height="100" aria-label="Monthly Transaction Trends Chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Footer -->
+  <footer class="main-footer text-center">
+    <strong>&copy; 2025 Bank Admin Dashboard.</strong> All rights reserved.
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Monthly Transaction Trends Chart (Bar)
+  const ctx = document.getElementById('transactionChart').getContext('2d');
+  const transactionChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+      datasets: [{
+        label: 'Transactions',
+        data: [300,320,280,350,400,370,330,360,390,410,380,400],
+        backgroundColor: '#0d6efd'
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 50 }
+        }
+      }
+    }
+  });
+  
+  // Insights Chart (Line)
+  const insightsCtx = document.getElementById('insightsChart').getContext('2d');
+  const insightsChart = new Chart(insightsCtx, {
+    type: 'line',
+    data: {
+      labels: ['08:00','10:00','12:00','14:00','16:00','18:00','20:00'],
+      datasets: [{
+        label: 'Revenue (GHC)',
+        data: [10000,15000,20000,30000,35000,40000,45000],
+        borderColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.2)',
+        tension: 0.4
+      }]
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#fff' }, grid: { display: false } },
+        y: { ticks: { color: '#fff', stepSize: 5000 }, grid: { color: 'rgba(255,255,255,0.2)' } }
+      }
+    }
+  });
+  
+  // Transaction Distribution Chart (Doughnut)
+  const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+  const distributionChart = new Chart(distributionCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Deposits', 'Withdrawals', 'Transfers'],
+      datasets: [{
+        data: [40, 25, 35],
+        backgroundColor: ['#28a745','#dc3545','#ffc107']
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+  
+  // Customer Growth Chart (Line)
+  const growthCtx = document.getElementById('growthChart').getContext('2d');
+  const growthChart = new Chart(growthCtx, {
+    type: 'line',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+      datasets: [{
+        label: 'New Customers',
+        data: [50,60,55,70,80,75,90,95,100,110,105,120],
+        borderColor: '#17a2b8',
+        backgroundColor: 'rgba(23,162,184,0.2)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 10 } } },
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+  
+  // Additional Analytics: Loan Performance Chart (Line Chart)
+  const loanCtx = document.getElementById('loanPerformanceChart')?.getContext('2d');
+  if (loanCtx) {
+    const loanChart = new Chart(loanCtx, {
+      type: 'line',
+      data: {
+        labels: ['Q1','Q2','Q3','Q4'],
+        datasets: [{
+          label: 'Loan Performance (%)',
+          data: [70, 75, 65, 80],
+          borderColor: '#ffc107',
+          backgroundColor: 'rgba(255,193,7,0.2)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } },
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  }
+</script>
+</body>
+</html>

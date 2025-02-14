@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter,sans-serif:wght@5008display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter,sans-serif';
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to right, #deeff7 0%, #deeff7 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+section {
+  position: relative;
+  width: 400px;
+
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 15px;
+  border: 5px solid #062942;
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem, 3rem;
+  row-gap: 100px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #062942;
+}
+
+.inputbox {
+  position: relative;
+  margin: 45px, 0;
+  width: 300px;
+  border-radius: 20px;
+  border: 1px solid #062942;
+}
+
+.inputbox label {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+  color: #062942;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: -1.5px;
+  background: white;
+  padding: 0px, 10px;
+  color: #030961;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.inputbox input {
+  width: 100%;
+  height: 40px;
+  border-radius: 1px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0, 0px, 0, 0px;
+  padding-left: 0px;
+  color: #062942;
+}
+
+.inputbox ion-icon {
+  position: absolute;
+  right: 25px;
+  color: #062942;
+  font-size: 1.2rem;
+  top: 10px;
+}

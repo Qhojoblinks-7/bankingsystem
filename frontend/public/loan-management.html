@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loan Management - Bank Admin Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style> body { font-family: 'Montserrat', sans-serif; } </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar & Sidebar (reuse code from Home Page) -->
+  <!-- ... -->
+  <div class="content-wrapper">
+    <header class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6"><h1 class="m-0">Loan Management</h1></div>
+          <div class="col-sm-6">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Loan Management</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="content">
+      <div class="container-fluid">
+        <p>Manage and monitor all loans in the bank. View pending, approved, and overdue loans.</p>
+        <!-- Loan Portfolio Table -->
+        <div class="card">
+          <div class="card-header"><h5>Loan Portfolio</h5></div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead class="table-light">
+                <tr>
+                  <th>Loan ID</th>
+                  <th>Customer</th>
+                  <th>Amount (GHC)</th>
+                  <th>Status</th>
+                  <th>Due Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>L001</td>
+                  <td>John Doe</td>
+                  <td>50,000</td>
+                  <td><span class="badge bg-success">Approved</span></td>
+                  <td>2025-06-30</td>
+                </tr>
+                <tr>
+                  <td>L002</td>
+                  <td>Jane Smith</td>
+                  <td>75,000</td>
+                  <td><span class="badge bg-warning">Pending</span></td>
+                  <td>2025-07-15</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Loan Performance Chart -->
+        <div class="card">
+          <div class="card-header"><h5>Loan Performance Trends</h5></div>
+          <div class="card-body">
+            <canvas id="loanPerformanceChart" height="150"></canvas>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="main-footer text-center">
+    <strong>&copy; 2025 Bank Admin Dashboard.</strong> All rights reserved.
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const loanCtx = document.getElementById('loanPerformanceChart').getContext('2d');
+  new Chart(loanCtx, {
+    type: 'line',
+    data: {
+      labels: ['Q1','Q2','Q3','Q4'],
+      datasets: [{
+        label: 'Loan Performance (%)',
+        data: [70,75,65,80],
+        borderColor: '#ffc107',
+        backgroundColor: 'rgba(255,193,7,0.2)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } },
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+</script>
+</body>
+</html>

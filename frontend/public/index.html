@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to FutureLink Bank</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <style>
+    /* Overall page styles */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #E6FAFF; /* Page background */
+      color: #003246; /* Font color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;      
+      padding: 1rem;
+    }
+
+
+    /* Card styling with fade-in animation */
+    .card {
+      margin-top: 1rem;
+      font-family: 'Roboto', sans-serif;
+      background-color: rgba(209, 242, 250, 0.3); /* Card background with transparency */
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* Card fade in keyframes */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Heading animation */
+    .card h1 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      opacity: 0;
+      animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Paragraph styling with a slightly delayed fade-in */
+    .card p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    /* Call-to-action button styles with a pulsing effect */
+    .cta-btn {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #00432E;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: pulse 2s infinite alternate;
+    }
+
+    .cta-btn:hover {
+      background-color: #026848;
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.02);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .card {
+        padding: 1rem;
+        margin: 1rem auto;
+      }
+
+      .card h1 {
+        font-size: 1rem;
+      }
+
+      .card p {
+        font-size: 0.875rem;
+      }
+
+      .cta-btn {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
+
+      img{
+        margin-top: 5rem;
+        margin-bottom: -50rem;
+        width: 70vw;
+        height: 40vh;
+        margin-top: 2rem;
+      }
+
+      .logo {
+      width: 20%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 2rem;
+
+    }
+
+      body{
+        display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      }
+    }
+
+    /* Image styling */
+    img {
+      width: 50%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+
+    }
+
+    .logo {
+      width: 40%;
+      height: 40%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+
+    }
+  </style>
+</head>
+<body>
+  <img src="Layer 4.png" alt="bank logo">
+  <main class="card">
+    <img src="Layer 2.png" class="logo" alt="bank logo">
+    <h1>Discover the freedom to live better with smarter banking.</h1>
+    <p>
+      Manage your money effortlessly with secure and innovative tools tailored to your needs.
+      Empower your financial future and live life on your terms.
+    </p>
+    <button class="cta-btn" onclick="location.href='createAccount.html'">
+      Get Started
+    </button>
+  </main>
+</body>
+</html>

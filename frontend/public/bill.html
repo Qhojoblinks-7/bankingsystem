@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bill Payment Categories</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .category-icon {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      margin-right: 8px;
+    }
+    .bill-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-4">Bill Payments</h1>
+    <!-- Navigation Tabs for Bill Categories -->
+    <ul class="nav nav-tabs" id="billTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="utilities-tab" data-bs-toggle="tab" data-bs-target="#utilities" type="button" role="tab" aria-controls="utilities" aria-selected="true">
+          <img src="https://via.placeholder.com/30?text=U" alt="Utilities Icon" class="category-icon">Utilities
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button" role="tab" aria-controls="mobile" aria-selected="false">
+          <img src="https://via.placeholder.com/30?text=M" alt="Mobile Recharge Icon" class="category-icon">Mobile Recharge
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="credit-tab" data-bs-toggle="tab" data-bs-target="#credit" type="button" role="tab" aria-controls="credit" aria-selected="false">
+          <img src="https://via.placeholder.com/30?text=C" alt="Credit Card Icon" class="category-icon">Credit Card Bills
+        </button>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="billTabsContent">
+      <!-- Utilities Tab -->
+      <div class="tab-pane fade show active" id="utilities" role="tabpanel" aria-labelledby="utilities-tab">
+        <div class="mt-3">
+          <h4>Utilities</h4>
+          <div class="bill-card">
+            <h5>Electricity Bill</h5>
+            <p>Provider: ECG (Electricity Company of Ghana)</p>
+            <button class="btn btn-primary">Pay Now</button>
+          </div>
+          <div class="bill-card">
+            <h5>Water Bill</h5>
+            <p>Provider: Ghana Water Company Limited</p>
+            <button class="btn btn-primary">Pay Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Recharge Tab -->
+      <div class="tab-pane fade" id="mobile" role="tabpanel" aria-labelledby="mobile-tab">
+        <div class="mt-3">
+          <h4>Mobile Recharge</h4>
+          <div class="bill-card">
+            <h5>MTN Recharge</h5>
+            <p>Top up your MTN prepaid account</p>
+            <button class="btn btn-primary">Recharge</button>
+          </div>
+          <div class="bill-card">
+            <h5>AirtelTigo Recharge</h5>
+            <p>Top up your AirtelTigo prepaid account</p>
+            <button class="btn btn-primary">Recharge</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credit Card Bills Tab -->
+      <div class="tab-pane fade" id="credit" role="tabpanel" aria-labelledby="credit-tab">
+        <div class="mt-3">
+          <h4>Credit Card Bills</h4>
+          <div class="bill-card">
+            <h5>Standard Chartered Credit Card</h5>
+            <p>Outstanding Balance: GHC 1,200</p>
+            <button class="btn btn-primary">Pay Bill</button>
+          </div>
+          <div class="bill-card">
+            <h5>Fidelity Bank Credit Card</h5>
+            <p>Outstanding Balance: GHC 800</p>
+            <button class="btn btn-primary">Pay Bill</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investment Options - Ghana Banking App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .investment-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      background-color: #f8f9fa;
+    }
+    .filter-section {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-4">Investment Options</h1>
+
+    <!-- Dashboard with Visual Summaries -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h4>Portfolio Performance</h4>
+        <!-- Canvas for Chart.js -->
+        <canvas id="performanceChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filter-section">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="riskFilter" class="form-label">Risk Level</label>
+          <select id="riskFilter" class="form-select">
+            <option value="" selected>All</option>
+            <option value="low">Low</option>
+            <option value="moderate">Moderate</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="durationFilter" class="form-label">Duration (Years)</label>
+          <input type="range" class="form-range" id="durationFilter" min="1" max="10" step="1">
+          <small id="durationValue" class="text-muted">1 Year</small>
+        </div>
+        <div class="col-md-4">
+          <label for="performanceFilter" class="form-label">Minimum Expected Return (%)</label>
+          <input type="range" class="form-range" id="performanceFilter" min="1" max="20" step="1">
+          <small id="performanceValue" class="text-muted">1%</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Investment Product Cards -->
+    <div class="row">
+      <!-- Example Investment Product Card -->
+      <div class="col-md-4">
+        <div class="investment-card">
+          <h5>Savings Bonds</h5>
+          <p>Expected Return: 5%</p>
+          <p>Risk Level: Low</p>
+          <p>Duration: 5 Years</p>
+          <button class="btn btn-primary btn-sm">Learn More</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="investment-card">
+          <h5>Mutual Funds</h5>
+          <p>Expected Return: 8%</p>
+          <p>Risk Level: Moderate</p>
+          <p>Duration: 3 Years</p>
+          <button class="btn btn-primary btn-sm">Invest Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="investment-card">
+          <h5>Stock Portfolio</h5>
+          <p>Expected Return: 12%</p>
+          <p>Risk Level: High</p>
+          <p>Duration: 7 Years</p>
+          <button class="btn btn-primary btn-sm">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include Bootstrap and Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Initialize Chart.js with sample data
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Portfolio Value (GHC)',
+          data: [5000, 5200, 5100, 5300, 5400, 5500],
+          borderColor: '#007bff',
+          backgroundColor: 'rgba(0,123,255,0.1)',
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false
+          }
+        }
+      }
+    });
+
+    // Update range values for filters (optional interactivity)
+    const durationFilter = document.getElementById('durationFilter');
+    const durationValue = document.getElementById('durationValue');
+    durationFilter.addEventListener('input', function() {
+      durationValue.textContent = durationFilter.value + " Year" + (durationFilter.value > 1 ? "s" : "");
+    });
+
+    const performanceFilter = document.getElementById('performanceFilter');
+    const performanceValue = document.getElementById('performanceValue');
+    performanceFilter.addEventListener('input', function() {
+      performanceValue.textContent = performanceFilter.value + "%";
+    });
+  </script>
+</body>
+</html>

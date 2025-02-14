@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Favicon (update path if needed) -->
+  <link rel="icon" type="image/png" href="adobe-express-file-4-10.png" />
+  
+  <!-- (Optional) Custom CSS -->
+  <!-- <link rel="stylesheet" href="vars.css" />
+  <link rel="stylesheet" href="style.css" /> -->
+</head>
+<body class="bg-sky-50 font-sans">
+
+  <!-- HEADER -->
+  <header class="bg-sky-50 h-36 shadow-md p-4 flex  justify-between">
+    <div class="flex items-center space-x-4">
+      <div class="">
+        <img src="/adobe-express-file-4-10.png" alt="Logo" class="h-10" />
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="textsky-50 font-medium hover:text-blue-700">Home</a>
+        <a href="#" class="text-teal-900  hover:text-blue-700 font-medium">Transactions</a>
+        <a href="#" class="text-teal-900 font-medium hover:text-blue-700">Analytics</a>
+        <a href="#" class="text-teal-900 font-medium hover:text-blue-700">Cards</a>
+        <a href="#" class="text-teal-900 font-medium hover:text-blue-700">Payments</a>
+        <a href="#" class="text-teal-900 font-medium hover:text-blue-700">Investments</a>
+        <a href="#" class="text-teal-900 font-medium hover:text-blue-700">Settings</a>
+      </nav>
+    </div>
+    <!-- Mobile menu open button -->
+    <button id="menu-toggle-open" type="button" title="Open Menu" class="md:hidden text-green-800 text-2xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- MOBILE SIDEBAR -->
+  <aside id="mobile-sidebar" class="fixed top-0 left-0 h-dvh w-64 bg-emerald-600 text-white p-6 hidden">
+    <button id="menu-toggle-close" type="button" title="Close Menu" class="absolute top-4 right-4 text-white text-2xl">
+      <i class="fas fa-times"></i>
+    </button>
+    <nav class="mt-6 space-y-4">
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-money-bill-wave"></i> Transactions</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-chart-line"></i> Analytics</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-credit-card"></i> Cards</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-arrow-down"></i> Deposits</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-money-check-alt"></i> Payments</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-chart-pie"></i> Investments</a>
+      <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-cog"></i> Settings</a>
+    </nav>
+  </aside>
+
+  <div class="flex flex-col md:flex-row">
+    <!-- MAIN SIDEBAR (Desktop) -->
+    <aside class="w-64 bg-green-700  text-white p-6 hidden md:block">
+      <nav class="mt-6 space-y-4 max-h-dvh">
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-money-bill-wave"></i> Transactions</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-chart-line"></i> Analytics</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-credit-card"></i> Cards</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-arrow-down"></i> Deposits</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-money-check-alt"></i> Payments</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-chart-pie"></i> Investments</a>
+        <a href="#" class="block text-sky-50 hover:text-white"><i class="fas fa-cog"></i> Settings</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-6">
+      
+      <!-- SECTION 1: User Profile, Account ID & Account Type, Balance Card -->
+      <section class="space-y-6 bg-sky-100 w-full p-6 rounded-lg shadow-md">
+        <!-- Row 1: Two-column layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Left: Inline Account Type -->
+          <div class="flex flex-col justify-center">
+            <span class="text-lg font-bold text-gray-700 text-center md:text-left">Account Type:</span>
+            <span class="text-gray-600 text-center md:text-left">Premium Savings</span>
+          </div>
+          <!-- Right: Card with Profile and Account ID -->
+          <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between space-x-4">
+            <div class="flex flex-col">
+              <span class="text-lg font-bold text-gray-700">Account ID:</span>
+              <span class="text-gray-600">#123456789</span>
+            </div>
+            <img src="/avatars-3-d-avatar-210.png" alt="User Profile" class="h-16 w-16 rounded-full object-cover" />
+          </div>
+        </div>
+        <!-- Row 2: Balance Card with Toggle -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-bold text-gray-700">Balance</h3>
+            <p id="balance" class="text-2xl font-semibold text-blue-700">₵****.*</p>
+          </div>
+          <button id="toggle-balance" type="button" title="Toggle Balance" class="text-gray-600 text-2xl">
+            <i id="balance-icon" class="fas fa-eye"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- SECTION 2: Transactions Overview -->
+      <section class="mt-8 space-y-6 bg-sky-100 w-full p-6 rounded-lg shadow-md">
+        <!-- Total Expenditure Card -->
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <h3 class="text-lg font-bold text-gray-700">Total Expenditure</h3>
+          <p id="total-expenditure" class="text-3xl font-semibold text-red-600">₵0.00</p>
+        </div>
+        <!-- Transactions Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full bg-white shadow-md rounded-lg">
+        <thead>
+          <tr class="bg-gray-800 text-white">
+            <th class="py-3 px-4 text-left">Date</th>
+            <th class="py-3 px-4 text-left">Description</th>
+            <th class="py-3 px-4 text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody id="transactions-table" class="text-gray-700">
+          <!-- Transactions will be populated here -->
+        </tbody>
+          </table>
+        </div>
+      </section>
+      </section>
+
+      <!-- SECTION 3: Custom Section (Placeholder) -->
+      <section class="mt-8 bg-sky-100 w-full p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-gray-900">Your Custom Section</h2>
+        <!-- Content for Section 3 goes here -->
+      </section>
+
+      <!-- SECTION 4: Line Graph for Dollar Rate Trend -->
+      <section class="mt-8 bg-sky-100 w-full p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-gray-900">Dollar Rate Trend</h2>
+        <canvas id="lineChart" class="bg-white p-4 shadow-md rounded-lg"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-teal-900 h-36 text-white text-center p-4 mt-6">
+    <p>&copy; 2024 User Dashboard. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Mobile Sidebar Toggle
+    document.getElementById("menu-toggle-open").addEventListener("click", function() {
+      document.getElementById("mobile-sidebar").classList.remove("hidden");
+    });
+    document.getElementById("menu-toggle-close").addEventListener("click", function() {
+      document.getElementById("mobile-sidebar").classList.add("hidden");
+    });
+
+    // Balance Toggle Functionality
+    document.getElementById("toggle-balance").addEventListener("click", function() {
+      const balanceEl = document.getElementById("balance");
+      const iconEl = document.getElementById("balance-icon");
+      if (balanceEl.textContent.trim() === "₵****.**") {
+        balanceEl.textContent = "₵12,500.00";
+        iconEl.classList.remove("fa-eye");
+        iconEl.classList.add("fa-eye-slash");
+      } else {
+        balanceEl.textContent = "₵****.**";
+        iconEl.classList.remove("fa-eye-slash");
+        iconEl.classList.add("fa-eye");
+      }
+    });
+
+    // Fetch balance from API
+    async function fetchBalance() {
+      try {
+        const response = await fetch('/api/balance');
+        const data = await response.json();
+        document.getElementById('balance').textContent = `₵${data.balance}`;
+      } catch (error) {
+        console.error('Error fetching balance:', error);
+      }
+    }
+
+    // Call fetchBalance on page load
+    fetchBalance();
+
+    // Line Chart Initialization using Chart.js
+    new Chart(document.getElementById("lineChart"), {
+            type: 'line',
+            data: { labels: ["Jan", "Feb", "Mar"], datasets: [{ label: "Dollar Rate", data: [1.2, 1.3, 1.15], borderColor: "blue" }] }
+        });
+  </script>
+</body>
+</html>

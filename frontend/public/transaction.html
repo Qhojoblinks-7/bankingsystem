@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transactions - Ghana Banking App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .credit {
+      color: green;
+    }
+    .debit {
+      color: red;
+    }
+    .transaction-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-4">Recent Transactions</h1>
+
+    <!-- Filter and Search Options -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <input type="date" class="form-control" placeholder="Filter by Date">
+      </div>
+      <div class="col-md-4">
+        <select class="form-select">
+          <option value="">Filter by Type</option>
+          <option value="deposit">Deposit</option>
+          <option value="withdrawal">Withdrawal</option>
+          <option value="transfer">Transfer</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Search Description">
+      </div>
+    </div>
+
+    <!-- Transaction Table -->
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount (GHC)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Transaction 1 -->
+          <tr>
+            <td>2025-01-25</td>
+            <td>
+              <img src="https://via.placeholder.com/20?text=A" alt="ATM Icon" class="transaction-icon">
+              ATM Withdrawal
+            </td>
+            <td class="debit">-500.00</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <!-- Transaction 2 -->
+          <tr>
+            <td>2025-01-24</td>
+            <td>
+              <img src="https://via.placeholder.com/20?text=S" alt="Salary Icon" class="transaction-icon">
+              Salary Deposit
+            </td>
+            <td class="credit">+4000.00</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <!-- Transaction 3 -->
+          <tr>
+            <td>2025-01-23</td>
+            <td>
+              <img src="https://via.placeholder.com/20?text=E" alt="Electricity Icon" class="transaction-icon">
+              Electricity Bill Payment
+            </td>
+            <td class="debit">-250.75</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <!-- Transaction 4 -->
+          <tr>
+            <td>2025-01-22</td>
+            <td>
+              <img src="https://via.placeholder.com/20?text=M" alt="Mobile Icon" class="transaction-icon">
+              Mobile Money Transfer
+            </td>
+            <td class="debit">-1200.00</td>
+            <td><span class="badge bg-warning text-dark">Pending</span></td>
+          </tr>
+          <!-- Transaction 5 -->
+          <tr>
+            <td>2025-01-21</td>
+            <td>
+              <img src="https://via.placeholder.com/20?text=L" alt="Loan Icon" class="transaction-icon">
+              Loan Disbursement
+            </td>
+            <td class="credit">+2500.00</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <!-- Transaction 6 -->
+          <tr>
+            <td>2025-01-20</td>
+            <td>
+              <img src="https://via.placeholder.com/20?text=P" alt="POS Icon" class="transaction-icon">
+              Supermarket Purchase (POS)
+            </td>
+            <td class="debit">-150.50</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

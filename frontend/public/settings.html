@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings - Ghana Banking App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .settings-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+      background-color: #f8f9fa;
+    }
+    .nav-pills .nav-link {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-4">Settings</h1>
+    
+    <div class="row">
+      <!-- Sidebar Navigation -->
+      <div class="col-md-3 mb-3">
+        <div class="nav flex-column nav-pills" id="settingsTab" role="tablist" aria-orientation="vertical">
+          <button class="nav-link active" id="profile-tab" data-bs-toggle="pill" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">
+            Profile
+          </button>
+          <button class="nav-link" id="security-tab" data-bs-toggle="pill" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="false">
+            Security
+          </button>
+          <button class="nav-link" id="preferences-tab" data-bs-toggle="pill" data-bs-target="#preferences" type="button" role="tab" aria-controls="preferences" aria-selected="false">
+            Preferences
+          </button>
+        </div>
+      </div>
+      
+      <!-- Settings Content -->
+      <div class="col-md-9">
+        <div class="tab-content" id="settingsTabContent">
+          
+          <!-- Profile Settings -->
+          <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="settings-card">
+              <h4>Profile Settings</h4>
+              <form>
+                <div class="mb-3">
+                  <label for="fullName" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="fullName" placeholder="John Doe" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="+233 20 000 0000" required>
+                </div>
+                <div class="mb-3">
+                  <label for="address" class="form-label">Residential Address</label>
+                  <input type="text" class="form-control" id="address" placeholder="Accra, Ghana" required>
+                </div>
+                <div class="mb-3">
+                  <label for="profilePic" class="form-label">Profile Picture</label>
+                  <input type="file" class="form-control" id="profilePic" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Profile</button>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Security Settings -->
+          <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+            <div class="settings-card">
+              <h4>Security Settings</h4>
+              <form>
+                <div class="mb-3">
+                  <label for="currentPassword" class="form-label">Current Password</label>
+                  <input type="password" class="form-control" id="currentPassword" required>
+                </div>
+                <div class="mb-3">
+                  <label for="newPassword" class="form-label">New Password</label>
+                  <input type="password" class="form-control" id="newPassword" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                  <input type="password" class="form-control" id="confirmPassword" required>
+                </div>
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" id="enable2FA">
+                  <label class="form-check-label" for="enable2FA">Enable Two-Factor Authentication</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Security</button>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Preferences Settings -->
+          <div class="tab-pane fade" id="preferences" role="tabpanel" aria-labelledby="preferences-tab">
+            <div class="settings-card">
+              <h4>Preferences</h4>
+              <form>
+                <div class="mb-3">
+                  <label for="languageSelect" class="form-label">Language</label>
+                  <select class="form-select" id="languageSelect">
+                    <option value="en" selected>English</option>
+                    <option value="fr">Français</option>
+                    <!-- Add other languages as needed -->
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="themeToggle" class="form-label">Theme</label>
+                  <select class="form-select" id="themeToggle">
+                    <option value="light" selected>Light Mode</option>
+                    <option value="dark">Dark Mode</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Notification Settings</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="emailNotifs" checked>
+                    <label class="form-check-label" for="emailNotifs">
+                      Email Notifications
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="smsNotifs">
+                    <label class="form-check-label" for="smsNotifs">
+                      SMS Notifications
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="appNotifs" checked>
+                    <label class="form-check-label" for="appNotifs">
+                      In-App Notifications
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Preferences</button>
+              </form>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
